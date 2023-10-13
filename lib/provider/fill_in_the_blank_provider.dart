@@ -14,7 +14,7 @@ class FibProvider extends ChangeNotifier{
   }
 
   removeText(){
-    answer = lastInput;
+    answer = answer.substring(0, (answer.length - 1));
     notifyListeners();
   }
 

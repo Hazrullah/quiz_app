@@ -15,7 +15,9 @@ class FillInBlank extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: Theme.of(context).brightness == Brightness.light? gradientLightBody : gradientDarkBody,
+          colors: Theme.of(context).brightness == Brightness.light
+              ? gradientLightBody
+              : gradientDarkBody,
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
@@ -24,7 +26,6 @@ class FillInBlank extends StatelessWidget {
         backgroundColor: Colors.transparent,
         drawer: Drawer(),
         appBar: QuizAppBar(),
-        // TheAppBar(),
         body: QuizBody(answerStyle: FillInBlankAnswer()),
         bottomNavigationBar: QuizBottomBar(),
       ),
@@ -40,9 +41,14 @@ class FillInBlankAnswer extends StatefulWidget {
 }
 
 class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
+  List<String> answerList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+
+
   @override
   Widget build(BuildContext context) {
     var data = Provider.of<FibProvider>(context).answer;
+    var provider = Provider.of<FibProvider>(context);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -69,37 +75,43 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
               children: [
                 Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(data),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        width: 3,
-                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  padding: const EdgeInsets.only(bottom: 2),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AutoSizeText(
+                        data,
+                        minFontSize: 25,
                       ),
-                    ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            provider.removeText();
+                          });
+                        },
+                        icon: Icon(Icons.backspace),
+                      ),
+                    ],
                   ),
+                ),
+                Divider(
+                  thickness: 4,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
               ],
             ),
           ),
         ),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AlphabetCard(alphabet: "aaaaaaaaaa"),
-            AlphabetCard(alphabet: "bbbbbbbb"),
-            AlphabetCard(alphabet: "cccccccc"),
+            for (var i = 0; i < 5; i++) AlphabetCard(alphabet: answerList[i]),
           ],
         ),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AlphabetCard(alphabet: "d"),
-            AlphabetCard(alphabet: "e"),
-            AlphabetCard(alphabet: "f"),
+            for (var i = 5; i < 10; i++) AlphabetCard(alphabet: answerList[i]),
           ],
         ),
       ],
@@ -114,13 +126,12 @@ class AlphabetCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     var data = Provider.of<FibProvider>(context);
     return Flexible(
       child: GestureDetector(
-        onTap: () =>  data.insertText(alphabet),
+        onTap: () => data.insertText(alphabet),
         child: Container(
-          width: 100,
+          width: 60,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
           decoration: ShapeDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
@@ -138,7 +149,7 @@ class AlphabetCard extends StatelessWidget {
           ),
           child: AutoSizeText(
             alphabet,
-            minFontSize: 15,
+            minFontSize: 20,
             textAlign: TextAlign.center,
             // style: Theme.of(context).textTheme.bodySmall,
           ),
