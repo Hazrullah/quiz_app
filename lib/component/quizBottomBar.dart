@@ -37,6 +37,7 @@ class QuizBottomBar extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(
                 Icons.navigate_before,
+                size: 40,
               ),
             ),
             Container(
@@ -65,6 +66,7 @@ class QuizBottomBar extends StatelessWidget {
               onPressed: () {},
               icon: Icon(
                 Icons.navigate_next,
+                size: 40,
               ),
             ),
           ],
