@@ -9,7 +9,6 @@ class MultipleChoice1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       drawer: const Drawer(),
       appBar: QuizAppBar(),
@@ -50,17 +49,17 @@ class AnswerCard extends StatelessWidget {
       style: ButtonStyle(
         minimumSize: const MaterialStatePropertyAll(Size(double.infinity, 50)),
         // shadowColor: MaterialStatePropertyAll(Color(0x33FFC107)),
-        backgroundColor: const MaterialStatePropertyAll(Color(0xFFFFF8E1)),
+        backgroundColor: MaterialStatePropertyAll<Color>(Theme.of(context).colorScheme.primaryContainer),
         shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
-      child: const Text(
+      child: Text(
         "hello",
         style: TextStyle(
-          color: Colors.black,
+          color: Theme.of(context).colorScheme.onPrimaryContainer,
         ),
       ),
     );
