@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'component/customAppBar.dart';
-import 'component/customBody.dart';
-import 'component/customBottomBar.dart';
+import 'package:quiz_app/component/quizAppBar.dart';
+import 'package:quiz_app/component/quizBody.dart';
+import 'package:quiz_app/component/quizBottomBar.dart';
 
 class MultipleChoice1 extends StatelessWidget {
   const MultipleChoice1({super.key});
@@ -12,9 +12,9 @@ class MultipleChoice1 extends StatelessWidget {
       // extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       drawer: const Drawer(),
-      appBar: buildAppBar(),
-      body: const Body(answerStyle: ListAnswer()),
-      bottomNavigationBar: const CustomBottomBarDark(),
+      appBar: QuizAppBar(),
+      body: const QuizBody(answerStyle: ListAnswer()),
+      bottomNavigationBar: const QuizBottomBar(),
     );
   }
 }

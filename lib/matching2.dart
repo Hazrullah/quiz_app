@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/component/customAppBar.dart';
-import 'package:quiz_app/component/customBottomBar.dart';
+import 'package:quiz_app/component/quizAppBar.dart';
+import 'package:quiz_app/component/quizBottomBar.dart';
 import 'package:quiz_app/multipleChoice1.dart';
 
 class Matching2 extends StatelessWidget {
@@ -10,7 +10,7 @@ class Matching2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Drawer(),
-      appBar: buildAppBar(),
+      appBar: QuizAppBar(),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(20),
@@ -45,7 +45,7 @@ class Matching2 extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const CustomBottomBar(),
+      bottomNavigationBar: const QuizBottomBar(),
     );
   }
 }

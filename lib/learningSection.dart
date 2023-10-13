@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'component/customAppBar.dart';
-import 'component/customBottomBar.dart';
+import 'package:quiz_app/component/quizAppBar.dart';
+import 'package:quiz_app/component/quizBottomBar.dart';
 
 class LearningSection extends StatelessWidget {
   const LearningSection({super.key});
@@ -10,7 +9,7 @@ class LearningSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Drawer(),
-      appBar: buildAppBar(),
+      appBar: QuizAppBar(),
       body: Center(
         child: Container(
           decoration: const BoxDecoration(
@@ -55,7 +54,7 @@ class LearningSection extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const CustomBottomBar(),
+      bottomNavigationBar: const QuizBottomBar(),
     );
   }
 }
