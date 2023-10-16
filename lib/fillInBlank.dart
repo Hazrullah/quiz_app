@@ -41,7 +41,7 @@ class FillInBlankAnswer extends StatefulWidget {
 }
 
 class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
-  List<String> answerList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+  List<String> alphabetList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
 
 
   @override
@@ -105,13 +105,13 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (var i = 0; i < 5; i++) AlphabetCard(alphabet: answerList[i]),
+            for (var i = 0; i < 5; i++) AlphabetCard(alphabet: alphabetList[i]),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (var i = 5; i < 10; i++) AlphabetCard(alphabet: answerList[i]),
+            for (var i = 5; i < 10; i++) AlphabetCard(alphabet: alphabetList[i]),
           ],
         ),
       ],
