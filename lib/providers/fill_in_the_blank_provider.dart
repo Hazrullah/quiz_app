@@ -1,21 +1,16 @@
-
-
 import 'package:flutter/material.dart';
 
-class FibProvider extends ChangeNotifier{
+class FibProvider extends ChangeNotifier {
 
   String answer = "";
-  String lastInput = "";
 
-  insertText(String value){
-    lastInput = answer;
+  void insertText(String value) {
     answer = answer + value;
     notifyListeners();
   }
 
-  removeText(){
+   void removeText() {
     answer = answer.substring(0, (answer.length - 1));
     notifyListeners();
   }
-
 }

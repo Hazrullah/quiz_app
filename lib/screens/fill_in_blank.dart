@@ -1,19 +1,22 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app/component/quizAppBar.dart';
-import 'package:quiz_app/component/quizBody.dart';
-import 'package:quiz_app/component/quizBottomBar.dart';
-import 'package:quiz_app/fillInBlankModel.dart';
-import 'package:quiz_app/provider/fill_in_the_blank_provider.dart';
-import 'package:quiz_app/themeManager.dart';
+import 'package:quiz_app/components/quiz_app_bar.dart';
+import 'package:quiz_app/components/quiz_body.dart';
+import 'package:quiz_app/components/quiz_bottom_bar.dart';
+import 'package:quiz_app/models/fill_in_blank_model.dart';
+import 'package:quiz_app/providers/fill_in_the_blank_provider.dart';
+import 'package:quiz_app/theme_manager.dart';
 
 class FillInBlank extends StatelessWidget {
   const FillInBlank({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var data = FillInBlankModel(question: "Tarikh in english", trueAnswer: "date", alphabetList: ["a", "t", "i", "r", "d", "e", "b", "p", "h", "g"]);
+    var data = FillInBlankModel(
+        question: "Tarikh in english",
+        trueAnswer: "date",
+        alphabetList: ["a", "t", "i", "r", "d", "e", "b", "p", "h", "g"]);
 
     return Container(
       decoration: BoxDecoration(
@@ -29,7 +32,10 @@ class FillInBlank extends StatelessWidget {
         backgroundColor: Colors.transparent,
         drawer: Drawer(),
         appBar: QuizAppBar(),
-        body: QuizBody(answerStyle: FillInBlankAnswer(fillInBlankModel: data), fillInBlankModel: data,),
+        body: QuizBody(
+          answerStyle: FillInBlankAnswer(fillInBlankModel: data),
+          fillInBlankModel: data,
+        ),
         bottomNavigationBar: QuizBottomBar(),
       ),
     );
@@ -38,7 +44,7 @@ class FillInBlank extends StatelessWidget {
 
 class FillInBlankAnswer extends StatefulWidget {
   const FillInBlankAnswer({required this.fillInBlankModel, super.key});
-  
+
   final FillInBlankModel fillInBlankModel;
 
   @override
@@ -48,7 +54,7 @@ class FillInBlankAnswer extends StatefulWidget {
 class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
   // List<String> alphabetList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
   late FillInBlankModel _fillInBlankModel;
-  
+
   @override
   void initState() {
     _fillInBlankModel = widget.fillInBlankModel;
@@ -96,15 +102,15 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                           minFontSize: 25,
                         ),
                       ),
-                      if(data.isNotEmpty)
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            provider.removeText();
-                          });
-                        },
-                        icon: Icon(Icons.backspace),
-                      ),
+                      if (data.isNotEmpty)
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              provider.removeText();
+                            });
+                          },
+                          icon: Icon(Icons.backspace),
+                        ),
                     ],
                   ),
                 ),
@@ -119,13 +125,15 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (var i = 0; i < 5; i++) AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i]),
+            for (var i = 0; i < 5; i++)
+              AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i]),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (var i = 5; i < 10; i++) AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i]),
+            for (var i = 5; i < 10; i++)
+              AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i]),
           ],
         ),
       ],
@@ -156,7 +164,7 @@ class AlphabetCard extends StatelessWidget {
               BoxShadow(
                 color: Theme.of(context).colorScheme.shadow,
                 blurRadius: 8,
-                offset: Offset(0, 4),
+                offset: const Offset(0, 4),
                 spreadRadius: 2,
               )
             ],

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/themeManager.dart';
+import 'package:quiz_app/theme_manager.dart';
 
 class QuizAppBar extends StatelessWidget implements PreferredSizeWidget {
-
   const QuizAppBar({super.key});
 
   @override
@@ -15,14 +14,16 @@ class QuizAppBar extends StatelessWidget implements PreferredSizeWidget {
             BoxShadow(
               color: Theme.of(context).colorScheme.outline,
               blurRadius: 8,
-              offset: Offset(0, 4),
+              offset: const Offset(0, 4),
               spreadRadius: 0,
             )
           ],
           borderRadius: BorderRadius.circular(8),
           gradient: LinearGradient(
-            colors: Theme.of(context).brightness == Brightness.light? gradientLight : gradientDark,
-            stops: [
+            colors: Theme.of(context).brightness == Brightness.light
+                ? gradientLight
+                : gradientDark,
+            stops: const [
               0.0,
               0.15,
               1.0,
@@ -50,5 +51,5 @@ class QuizAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

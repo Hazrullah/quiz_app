@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app/provider/fill_in_the_blank_provider.dart';
-import 'package:quiz_app/themeManager.dart';
-import 'package:quiz_app/trueFalse.dart';
-import 'fillInBlank.dart';
-import 'learningSection.dart';
-import 'matching1.dart';
-import 'matching2.dart';
-import 'multipleChoice1.dart';
-import 'multipleChoice2.dart';
+import 'package:quiz_app/providers/fill_in_the_blank_provider.dart';
+import 'package:quiz_app/theme_manager.dart';
+import 'screens/fill_in_blank.dart';
+import 'screens/learning_section.dart';
 
 void main() {
   runApp(const MainApp());

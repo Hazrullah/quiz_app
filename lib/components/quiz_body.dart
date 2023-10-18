@@ -1,6 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/fillInBlankModel.dart';
-import 'package:quiz_app/themeManager.dart';
+import 'package:quiz_app/models/fill_in_blank_model.dart';
+import 'package:quiz_app/theme_manager.dart';
 
 class QuizBody extends StatelessWidget {
   final Widget answerStyle;
@@ -26,14 +27,16 @@ class QuizBody extends StatelessWidget {
                 BoxShadow(
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   blurRadius: 8,
-                  offset: Offset(0, 4),
+                  offset: const Offset(0, 4),
                   spreadRadius: 0,
                 )
               ],
               borderRadius: BorderRadius.circular(8),
               gradient: LinearGradient(
-                colors: Theme.of(context).brightness == Brightness.light? gradientLight : gradientDark,
-                stops: [
+                colors: Theme.of(context).brightness == Brightness.light
+                    ? gradientLight
+                    : gradientDark,
+                stops: const [
                   0.0,
                   0.15,
                   1.0,
@@ -53,15 +56,15 @@ class QuizBody extends StatelessWidget {
                   BoxShadow(
                     color: Theme.of(context).colorScheme.shadow,
                     blurRadius: 8,
-                    offset: Offset(0, 4),
+                    offset: const Offset(0, 4),
                     spreadRadius: 2,
                   ),
                 ],
               ),
               child: Center(
-                child: Text(
+                child: AutoSizeText(
                   fillInBlankModel!.question,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  minFontSize: 20,
                 ),
               ),
             ),

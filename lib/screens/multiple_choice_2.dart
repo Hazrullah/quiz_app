@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/component/quizAppBar.dart';
-import 'package:quiz_app/component/quizBody.dart';
-import 'package:quiz_app/component/quizBottomBar.dart';
-import 'multipleChoice1.dart';
+import 'package:quiz_app/components/quiz_app_bar.dart';
+import 'package:quiz_app/components/quiz_body.dart';
+import 'package:quiz_app/components/quiz_bottom_bar.dart';
+import 'multiple_choice_1.dart';
 
 class MultipleChoice2 extends StatelessWidget {
   const MultipleChoice2({super.key});

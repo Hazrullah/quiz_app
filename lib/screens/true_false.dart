@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/component/quizAppBar.dart';
-import 'package:quiz_app/component/quizBody.dart';
-import 'package:quiz_app/component/quizBottomBar.dart';
-import 'package:quiz_app/themeManager.dart';
-import 'multipleChoice1.dart';
+import 'package:quiz_app/components/quiz_app_bar.dart';
+import 'package:quiz_app/components/quiz_body.dart';
+import 'package:quiz_app/components/quiz_bottom_bar.dart';
+import 'package:quiz_app/screens/multiple_choice_1.dart';
+import 'package:quiz_app/theme_manager.dart';
 
 class TrueFalse extends StatelessWidget {
   const TrueFalse({super.key});
@@ -18,12 +18,12 @@ class TrueFalse extends StatelessWidget {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: Scaffold(
+      child: const Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: const Drawer(),
+        drawer: Drawer(),
         appBar: QuizAppBar(),
-        body: QuizBody(answerStyle: const TrueFalseAnswer(),),
-        bottomNavigationBar: const QuizBottomBar(),
+        body: QuizBody(answerStyle: TrueFalseAnswer(),),
+        bottomNavigationBar: QuizBottomBar(),
       ),
     );
   }

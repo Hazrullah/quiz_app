@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/component/quizAppBar.dart';
-import 'package:quiz_app/component/quizBottomBar.dart';
-import 'package:quiz_app/multipleChoice1.dart';
+import 'package:quiz_app/components/quiz_app_bar.dart';
+import 'package:quiz_app/components/quiz_bottom_bar.dart';
+import 'package:quiz_app/screens/multiple_choice_1.dart';
 
 class Matching1 extends StatelessWidget {
   const Matching1({super.key});
