@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quiz_app/component/quizAppBar.dart';
 import 'package:quiz_app/component/quizBody.dart';
 import 'package:quiz_app/component/quizBottomBar.dart';
+import 'package:quiz_app/fillInBlankModel.dart';
 import 'package:quiz_app/provider/fill_in_the_blank_provider.dart';
 import 'package:quiz_app/themeManager.dart';
 
@@ -12,6 +13,8 @@ class FillInBlank extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var data = FillInBlankModel(question: "Tarikh in english", trueAnswer: "date", alphabetList: ["a", "t", "i", "r", "d", "e", "b", "p", "h", "g"]);
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -26,7 +29,7 @@ class FillInBlank extends StatelessWidget {
         backgroundColor: Colors.transparent,
         drawer: Drawer(),
         appBar: QuizAppBar(),
-        body: QuizBody(answerStyle: FillInBlankAnswer()),
+        body: QuizBody(answerStyle: FillInBlankAnswer(fillInBlankModel: data), fillInBlankModel: data,),
         bottomNavigationBar: QuizBottomBar(),
       ),
     );
@@ -34,15 +37,23 @@ class FillInBlank extends StatelessWidget {
 }
 
 class FillInBlankAnswer extends StatefulWidget {
-  const FillInBlankAnswer({super.key});
+  const FillInBlankAnswer({required this.fillInBlankModel, super.key});
+  
+  final FillInBlankModel fillInBlankModel;
 
   @override
   State<FillInBlankAnswer> createState() => _FillInBlankAnswerState();
 }
 
 class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
-  List<String> alphabetList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-
+  // List<String> alphabetList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+  late FillInBlankModel _fillInBlankModel;
+  
+  @override
+  void initState() {
+    _fillInBlankModel = widget.fillInBlankModel;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +80,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -79,10 +90,13 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      AutoSizeText(
-                        data,
-                        minFontSize: 25,
+                      Flexible(
+                        child: AutoSizeText(
+                          data,
+                          minFontSize: 25,
+                        ),
                       ),
+                      if(data.isNotEmpty)
                       IconButton(
                         onPressed: () {
                           setState(() {
@@ -105,13 +119,13 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (var i = 0; i < 5; i++) AlphabetCard(alphabet: alphabetList[i]),
+            for (var i = 0; i < 5; i++) AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i]),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (var i = 5; i < 10; i++) AlphabetCard(alphabet: alphabetList[i]),
+            for (var i = 5; i < 10; i++) AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i]),
           ],
         ),
       ],

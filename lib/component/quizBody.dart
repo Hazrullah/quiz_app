@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/fillInBlankModel.dart';
 import 'package:quiz_app/themeManager.dart';
 
 class QuizBody extends StatelessWidget {
   final Widget answerStyle;
+  final FillInBlankModel? fillInBlankModel;
 
   const QuizBody({
     super.key,
     required this.answerStyle,
+    this.fillInBlankModel,
   });
 
   @override
@@ -57,7 +60,7 @@ class QuizBody extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  "question",
+                  fillInBlankModel!.question,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
