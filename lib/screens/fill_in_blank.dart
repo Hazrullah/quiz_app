@@ -105,9 +105,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                       if (data.isNotEmpty)
                         IconButton(
                           onPressed: () {
-                            setState(() {
-                              provider.removeText();
-                            });
+                            provider.removeText();
                           },
                           icon: Icon(Icons.backspace),
                         ),
