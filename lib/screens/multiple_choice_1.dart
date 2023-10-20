@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/components/gradient_container.dart';
 import 'package:quiz_app/components/quiz_app_bar.dart';
 import 'package:quiz_app/components/quiz_body.dart';
 import 'package:quiz_app/components/quiz_bottom_bar.dart';
@@ -8,12 +9,14 @@ class MultipleChoice1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      drawer: const Drawer(),
-      appBar: QuizAppBar(),
-      body: const QuizBody(answerStyle: ListAnswer()),
-      bottomNavigationBar: const QuizBottomBar(),
+    return const GradientContainer(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        drawer: Drawer(),
+        appBar: QuizAppBar(),
+        body: QuizBody(answerStyle: ListAnswer()),
+        bottomNavigationBar: QuizBottomBar(),
+      ),
     );
   }
 }
@@ -38,28 +41,39 @@ class ListAnswer extends StatelessWidget {
 }
 
 class AnswerCard extends StatelessWidget {
-  const AnswerCard({
-    super.key,
-  });
+  final double width;
+  final double height;
+
+  const AnswerCard({super.key, this.width = double.infinity, this.height = 50});
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ButtonStyle(
-        minimumSize: const MaterialStatePropertyAll(Size(double.infinity, 50)),
-        // shadowColor: MaterialStatePropertyAll(Color(0x33FFC107)),
-        backgroundColor: MaterialStatePropertyAll<Color>(Theme.of(context).colorScheme.primaryContainer),
-        shape: MaterialStatePropertyAll(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+    return GestureDetector(
+      onTap: () {
+
+      },
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primaryContainer,
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).colorScheme.shadow,
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+              spreadRadius: 0,
+            ),
+          ],
+          borderRadius: BorderRadius.circular(8),
         ),
-      ),
-      child: Text(
-        "hello",
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.onPrimaryContainer,
+        child: Center(
+          child: Text(
+            "hello",
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+            ),
+          ),
         ),
       ),
     );

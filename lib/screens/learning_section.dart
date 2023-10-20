@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/components/gradient_container.dart';
 import 'package:quiz_app/components/quiz_app_bar.dart';
 import 'package:quiz_app/components/quiz_bottom_bar.dart';
 
@@ -7,21 +8,12 @@ class LearningSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: const Drawer(),
-      appBar: const QuizAppBar(),
-      body: Center(
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xFFFFBB7C),
-                Color(0xFFFFF8E1),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
+    return GradientContainer(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        drawer: const Drawer(),
+        appBar: const QuizAppBar(),
+        body: Center(
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             children: [
@@ -53,8 +45,8 @@ class LearningSection extends StatelessWidget {
             ],
           ),
         ),
+        bottomNavigationBar: const QuizBottomBar(),
       ),
-      bottomNavigationBar: const QuizBottomBar(),
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quiz_app/components/gradient_container.dart';
 import 'package:quiz_app/components/quiz_app_bar.dart';
 import 'package:quiz_app/components/quiz_body.dart';
 import 'package:quiz_app/components/quiz_bottom_bar.dart';
 import 'package:quiz_app/models/fill_in_blank_model.dart';
 import 'package:quiz_app/providers/fill_in_the_blank_provider.dart';
-import 'package:quiz_app/theme_manager.dart';
 
 class FillInBlank extends StatelessWidget {
   const FillInBlank({super.key});
@@ -18,16 +18,7 @@ class FillInBlank extends StatelessWidget {
         trueAnswer: "date",
         alphabetList: ["a", "t", "i", "r", "d", "e", "b", "p", "h", "g"]);
 
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: Theme.of(context).brightness == Brightness.light
-              ? gradientLightBody
-              : gradientDarkBody,
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
+    return GradientContainer(
       child: Scaffold(
         backgroundColor: Colors.transparent,
         drawer: Drawer(),
@@ -41,6 +32,8 @@ class FillInBlank extends StatelessWidget {
     );
   }
 }
+
+
 
 class FillInBlankAnswer extends StatefulWidget {
   const FillInBlankAnswer({required this.fillInBlankModel, super.key});
@@ -124,14 +117,20 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             for (var i = 0; i < 5; i++)
-              AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i], fillInBlankModel: _fillInBlankModel,),
+              AlphabetCard(
+                alphabet: _fillInBlankModel.alphabetList[i],
+                fillInBlankModel: _fillInBlankModel,
+              ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             for (var i = 5; i < 10; i++)
-              AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i], fillInBlankModel: _fillInBlankModel,),
+              AlphabetCard(
+                alphabet: _fillInBlankModel.alphabetList[i],
+                fillInBlankModel: _fillInBlankModel,
+              ),
           ],
         ),
       ],
@@ -143,7 +142,8 @@ class AlphabetCard extends StatelessWidget {
   final String alphabet;
   final FillInBlankModel fillInBlankModel;
 
-  const AlphabetCard({super.key, required this.alphabet, required this.fillInBlankModel});
+  const AlphabetCard(
+      {super.key, required this.alphabet, required this.fillInBlankModel});
 
   @override
   Widget build(BuildContext context) {

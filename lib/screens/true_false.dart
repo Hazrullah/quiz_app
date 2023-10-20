@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/components/gradient_container.dart';
 import 'package:quiz_app/components/quiz_app_bar.dart';
 import 'package:quiz_app/components/quiz_body.dart';
 import 'package:quiz_app/components/quiz_bottom_bar.dart';
@@ -10,15 +11,8 @@ class TrueFalse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: Theme.of(context).brightness == Brightness.light? gradientLightBody : gradientDarkBody,
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: const Scaffold(
+    return const GradientContainer(
+      child: Scaffold(
         backgroundColor: Colors.transparent,
         drawer: Drawer(),
         appBar: QuizAppBar(),
@@ -36,15 +30,17 @@ class TrueFalseAnswer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      shrinkWrap: true,
-      crossAxisCount: 2,
-      mainAxisSpacing: 20,
-      crossAxisSpacing: 20,
-      childAspectRatio: 2,
-      children: const [
-        AnswerCard(),
-        AnswerCard(),
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        AnswerCard(
+          width: 160,
+          height: 80,
+        ),
+        AnswerCard(
+          width: 160,
+          height: 80,
+        ),
       ],
     );
   }

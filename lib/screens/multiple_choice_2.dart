@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/components/gradient_container.dart';
 import 'package:quiz_app/components/quiz_app_bar.dart';
 import 'package:quiz_app/components/quiz_body.dart';
 import 'package:quiz_app/components/quiz_bottom_bar.dart';
@@ -9,11 +10,14 @@ class MultipleChoice2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: const Drawer(),
-      appBar: QuizAppBar(),
-      body: QuizBody(answerStyle: const GridAnswer(),),
-      bottomNavigationBar: const QuizBottomBar(),
+    return GradientContainer(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        drawer: const Drawer(),
+        appBar: QuizAppBar(),
+        body: QuizBody(answerStyle: const GridAnswer(),),
+        bottomNavigationBar: const QuizBottomBar(),
+      ),
     );
   }
 }

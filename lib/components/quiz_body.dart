@@ -63,7 +63,7 @@ class QuizBody extends StatelessWidget {
               ),
               child: Center(
                 child: AutoSizeText(
-                  fillInBlankModel!.question,
+                  fillInBlankModel?.question ?? "question",
                   minFontSize: 20,
                 ),
               ),
