@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app/components/gradient_container.dart';
-import 'package:quiz_app/components/quiz_app_bar.dart';
-import 'package:quiz_app/components/quiz_body.dart';
-import 'package:quiz_app/components/quiz_bottom_bar.dart';
+import 'package:quiz_app/widgets/gradient_container.dart';
+import 'package:quiz_app/widgets/quiz_app_bar.dart';
+import 'package:quiz_app/widgets/quiz_body.dart';
+import 'package:quiz_app/widgets/quiz_bottom_bar.dart';
 import 'package:quiz_app/models/fill_in_blank_model.dart';
 import 'package:quiz_app/providers/fill_in_the_blank_provider.dart';
 

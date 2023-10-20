@@ -1,42 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/components/gradient_container.dart';
-import 'package:quiz_app/components/quiz_app_bar.dart';
-import 'package:quiz_app/components/quiz_bottom_bar.dart';
-import 'package:quiz_app/screens/multiple_choice_1.dart';
+import 'package:quiz_app/widgets/container_card.dart';
+import 'package:quiz_app/widgets/gradient_container.dart';
+import 'package:quiz_app/widgets/quiz_app_bar.dart';
+import 'package:quiz_app/widgets/quiz_bottom_bar.dart';
 
 class Matching2 extends StatelessWidget {
   const Matching2({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GradientContainer(
+    return const GradientContainer(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: const Drawer(),
+        drawer: Drawer(),
         appBar: QuizAppBar(),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: GridView.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 40,
-              crossAxisSpacing: 80,
-              childAspectRatio: 1.2,
-              shrinkWrap: true,
-              children: const [
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
-              ],
-            ),
+        body: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ContainerCard(height: 90, width: 120, text: "hello",),
+                  ContainerCard(height: 90, width: 120, text: "hello",),
+                  ContainerCard(height: 90, width: 120, text: "hello",),
+                  ContainerCard(height: 90, width: 120, text: "hello",),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                children: [
+                  ContainerCard(height: 90, width: 120, text: "hello",),
+                  ContainerCard(height: 90, width: 120, text: "hello",),
+                  ContainerCard(height: 90, width: 120, text: "hello",),
+                  ContainerCard(height: 90, width: 120, text: "hello",),
+                ],
+              ),
+            ],
           ),
         ),
-        bottomNavigationBar: const QuizBottomBar(),
+        bottomNavigationBar: QuizBottomBar(),
       ),
     );
   }

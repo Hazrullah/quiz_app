@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/components/gradient_container.dart';
-import 'package:quiz_app/components/quiz_app_bar.dart';
-import 'package:quiz_app/components/quiz_body.dart';
-import 'package:quiz_app/components/quiz_bottom_bar.dart';
-import 'package:quiz_app/screens/multiple_choice_1.dart';
-import 'package:quiz_app/theme_manager.dart';
+import 'package:quiz_app/widgets/container_card.dart';
+import 'package:quiz_app/widgets/gradient_container.dart';
+import 'package:quiz_app/widgets/quiz_app_bar.dart';
+import 'package:quiz_app/widgets/quiz_body.dart';
+import 'package:quiz_app/widgets/quiz_bottom_bar.dart';
 
 class TrueFalse extends StatelessWidget {
   const TrueFalse({super.key});
@@ -33,13 +32,15 @@ class TrueFalseAnswer extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        AnswerCard(
+        ContainerCard(
           width: 160,
           height: 80,
+          text: "true",
         ),
-        AnswerCard(
+        ContainerCard(
           width: 160,
           height: 80,
+          text: "false",
         ),
       ],
     );

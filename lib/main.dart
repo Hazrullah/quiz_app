@@ -28,13 +28,13 @@ class MainApp extends StatelessWidget {
         darkTheme: darkTheme,
         themeMode: ThemeMode.light,
         home:
-        // FillInBlank(),
+        FillInBlank(),
         // TrueFalse(),
         // MultipleChoice1(),
         // MultipleChoice2(),
         // Matching1(),
         // Matching2(),
-        LearningSection(),
+        // LearningSection(),
       ),
     );
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/components/gradient_container.dart';
-import 'package:quiz_app/components/quiz_app_bar.dart';
-import 'package:quiz_app/components/quiz_bottom_bar.dart';
-import 'package:quiz_app/screens/multiple_choice_1.dart';
+import 'package:quiz_app/widgets/container_card.dart';
+import 'package:quiz_app/widgets/gradient_container.dart';
+import 'package:quiz_app/widgets/quiz_app_bar.dart';
+import 'package:quiz_app/widgets/quiz_bottom_bar.dart';
 
 class Matching1 extends StatelessWidget {
   const Matching1({super.key});
@@ -13,7 +13,7 @@ class Matching1 extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         drawer: const Drawer(),
-        appBar: QuizAppBar(),
+        appBar: const QuizAppBar(),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -23,12 +23,12 @@ class Matching1 extends StatelessWidget {
               crossAxisSpacing: 20,
               shrinkWrap: true,
               children: const [
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
-                AnswerCard(),
+                ContainerCard(text: "hello"),
+                ContainerCard(text: "hello"),
+                ContainerCard(text: "hello"),
+                ContainerCard(text: "hello"),
+                ContainerCard(text: "hello"),
+                ContainerCard(text: "hello"),
               ],
             ),
           ),

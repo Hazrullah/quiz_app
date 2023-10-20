@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/components/gradient_container.dart';
-import 'package:quiz_app/components/quiz_app_bar.dart';
-import 'package:quiz_app/components/quiz_bottom_bar.dart';
+import 'package:quiz_app/widgets/gradient_container.dart';
+import 'package:quiz_app/widgets/quiz_app_bar.dart';
+import 'package:quiz_app/widgets/quiz_bottom_bar.dart';
 
 class LearningSection extends StatelessWidget {
   const LearningSection({super.key});

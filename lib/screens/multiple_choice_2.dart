@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/components/gradient_container.dart';
-import 'package:quiz_app/components/quiz_app_bar.dart';
-import 'package:quiz_app/components/quiz_body.dart';
-import 'package:quiz_app/components/quiz_bottom_bar.dart';
-import 'multiple_choice_1.dart';
+import 'package:quiz_app/widgets/container_card.dart';
+import 'package:quiz_app/widgets/gradient_container.dart';
+import 'package:quiz_app/widgets/quiz_app_bar.dart';
+import 'package:quiz_app/widgets/quiz_body.dart';
+import 'package:quiz_app/widgets/quiz_bottom_bar.dart';
 
 class MultipleChoice2 extends StatelessWidget {
   const MultipleChoice2({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GradientContainer(
+    return const GradientContainer(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: const Drawer(),
+        drawer: Drawer(),
         appBar: QuizAppBar(),
-        body: QuizBody(answerStyle: const GridAnswer(),),
-        bottomNavigationBar: const QuizBottomBar(),
+        body: QuizBody(answerStyle: GridAnswer(),),
+        bottomNavigationBar: QuizBottomBar(),
       ),
     );
   }
@@ -36,10 +36,10 @@ class GridAnswer extends StatelessWidget {
       crossAxisSpacing: 20,
       childAspectRatio: 2,
       children: const [
-        AnswerCard(),
-        AnswerCard(),
-        AnswerCard(),
-        AnswerCard(),
+        ContainerCard(text: "hello"),
+        ContainerCard(text: "hello"),
+        ContainerCard(text: "hello"),
+        ContainerCard(text: "hello"),
       ],
     );
   }
