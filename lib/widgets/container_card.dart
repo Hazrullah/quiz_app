@@ -33,7 +33,7 @@ class ContainerCard extends StatelessWidget {
         child: Center(
           child: AutoSizeText(
             text,
-            minFontSize: 20,
+            minFontSize: 30,
             style: TextStyle(
               color: Theme.of(context).colorScheme.onPrimaryContainer,
             ),

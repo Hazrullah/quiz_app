@@ -157,7 +157,7 @@ class AlphabetCard extends StatelessWidget {
         },
         child: Container(
           width: 60,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
+          padding: EdgeInsets.symmetric(vertical: 15),
           decoration: ShapeDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
             shape: RoundedRectangleBorder(
@@ -174,7 +174,7 @@ class AlphabetCard extends StatelessWidget {
           ),
           child: AutoSizeText(
             alphabet,
-            minFontSize: 20,
+            minFontSize: 30,
             textAlign: TextAlign.center,
             // style: Theme.of(context).textTheme.bodySmall,
           ),
