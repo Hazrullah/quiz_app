@@ -124,14 +124,14 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             for (var i = 0; i < 5; i++)
-              AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i]),
+              AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i], fillInBlankModel: _fillInBlankModel,),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             for (var i = 5; i < 10; i++)
-              AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i]),
+              AlphabetCard(alphabet: _fillInBlankModel.alphabetList[i], fillInBlankModel: _fillInBlankModel,),
           ],
         ),
       ],
@@ -141,15 +141,20 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
 
 class AlphabetCard extends StatelessWidget {
   final String alphabet;
+  final FillInBlankModel fillInBlankModel;
 
-  const AlphabetCard({super.key, required this.alphabet});
+  const AlphabetCard({super.key, required this.alphabet, required this.fillInBlankModel});
 
   @override
   Widget build(BuildContext context) {
     var data = Provider.of<FibProvider>(context);
     return Flexible(
       child: GestureDetector(
-        onTap: () => data.insertText(alphabet),
+        // onTap: () => data.insertText(alphabet),
+        onTap: () {
+          data.insertText(alphabet);
+          fillInBlankModel.isTrue(data.answer);
+        },
         child: Container(
           width: 60,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
