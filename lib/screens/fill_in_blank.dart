@@ -16,7 +16,7 @@ class FillInBlank extends StatelessWidget {
     var data = FillInBlankModel(
         question: "Tarikh in english",
         trueAnswer: "date",
-        alphabetList: ["a", "t", "i", "r", "d", "e", "b", "p", "h", "g"]);
+        alphabetList: ["a", "t", "i", "r", "d", "e", "b", "p", "h", "g", "v", "u"]);
 
     return GradientContainer(
       child: Scaffold(
@@ -116,7 +116,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i < 6; i++)
               AlphabetCard(
                 alphabet: _fillInBlankModel.alphabetList[i],
                 fillInBlankModel: _fillInBlankModel,
@@ -126,7 +126,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (var i = 5; i < 10; i++)
+            for (var i = 6; i < 12; i++)
               AlphabetCard(
                 alphabet: _fillInBlankModel.alphabetList[i],
                 fillInBlankModel: _fillInBlankModel,
@@ -156,7 +156,7 @@ class AlphabetCard extends StatelessWidget {
           fillInBlankModel.isTrue(data.answer);
         },
         child: Container(
-          width: 60,
+          width: 50,
           padding: EdgeInsets.symmetric(vertical: 15),
           decoration: ShapeDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
