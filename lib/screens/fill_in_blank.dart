@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quiz_app/widgets/text_container.dart';
 import 'package:quiz_app/widgets/gradient_container.dart';
 import 'package:quiz_app/widgets/quiz_app_bar.dart';
 import 'package:quiz_app/widgets/quiz_body.dart';
@@ -16,24 +17,35 @@ class FillInBlank extends StatelessWidget {
     var data = FillInBlankModel(
         question: "Tarikh in english",
         trueAnswer: "date",
-        alphabetList: ["a", "t", "i", "r", "d", "e", "b", "p", "h", "g", "v", "u"]);
+        alphabetList: [
+          "a",
+          "t",
+          "i",
+          "r",
+          "d",
+          "e",
+          "b",
+          "p",
+          "h",
+          "g",
+          "v",
+          "u"
+        ]);
 
     return GradientContainer(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: Drawer(),
-        appBar: QuizAppBar(),
+        drawer: const Drawer(),
+        appBar: const QuizAppBar(),
         body: QuizBody(
           answerStyle: FillInBlankAnswer(fillInBlankModel: data),
           fillInBlankModel: data,
         ),
-        bottomNavigationBar: QuizBottomBar(),
+        bottomNavigationBar: const  QuizBottomBar(),
       ),
     );
   }
 }
-
-
 
 class FillInBlankAnswer extends StatefulWidget {
   const FillInBlankAnswer({required this.fillInBlankModel, super.key});
@@ -64,26 +76,24 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
       children: [
         Container(
           height: 100,
-          decoration: ShapeDecoration(
+          decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            shadows: [
+            boxShadow: [
               BoxShadow(
                 color: Theme.of(context).colorScheme.shadow,
                 blurRadius: 8,
-                offset: Offset(0, 4),
-                spreadRadius: 2,
-              )
+                offset: const Offset(0, 4),
+                spreadRadius: 0,
+              ),
             ],
+            borderRadius: BorderRadius.circular(8),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 2),
                   child: Row(
@@ -100,7 +110,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                           onPressed: () {
                             provider.removeText();
                           },
-                          icon: Icon(Icons.backspace),
+                          icon: const Icon(Icons.backspace),
                         ),
                     ],
                   ),
@@ -119,57 +129,18 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
           alignment: WrapAlignment.center,
           children: [
             for (var i = 0; i < _fillInBlankModel.alphabetList.length; i++)
-              AlphabetCard(
-                alphabet: _fillInBlankModel.alphabetList[i],
-                fillInBlankModel: _fillInBlankModel,
+              TextContainer(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+                text: _fillInBlankModel.alphabetList[i],
+                width: 50,
+                onTap: (){
+                  provider.insertText(_fillInBlankModel.alphabetList[i]);
+                  _fillInBlankModel.isTrue(provider.answer);
+                }
               ),
           ],
         ),
       ],
-    );
-  }
-}
-
-class AlphabetCard extends StatelessWidget {
-  final String alphabet;
-  final FillInBlankModel fillInBlankModel;
-
-  const AlphabetCard(
-      {super.key, required this.alphabet, required this.fillInBlankModel});
-
-  @override
-  Widget build(BuildContext context) {
-    var data = Provider.of<FibProvider>(context);
-    return GestureDetector(
-      // onTap: () => data.insertText(alphabet),
-      onTap: () {
-        data.insertText(alphabet);
-        fillInBlankModel.isTrue(data.answer);
-      },
-      child: Container(
-        width: 50,
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
-        decoration: ShapeDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          shadows: [
-            BoxShadow(
-              color: Theme.of(context).colorScheme.shadow,
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-              spreadRadius: 2,
-            )
-          ],
-        ),
-        child: AutoSizeText(
-          alphabet,
-          minFontSize: 30,
-          textAlign: TextAlign.center,
-          // style: Theme.of(context).textTheme.bodySmall,
-        ),
-      ),
     );
   }
 }

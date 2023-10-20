@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/widgets/container_card.dart';
+import 'package:quiz_app/widgets/text_container.dart';
 import 'package:quiz_app/widgets/gradient_container.dart';
 import 'package:quiz_app/widgets/quiz_app_bar.dart';
 import 'package:quiz_app/widgets/quiz_body.dart';
@@ -32,10 +32,10 @@ class ListAnswer extends StatelessWidget {
     return const Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        ContainerCard(text: "hello"),
-        ContainerCard(text: "hello"),
-        ContainerCard(text: "hello"),
-        ContainerCard(text: "hello"),
+        TextContainer(text: "hello", height: 50,),
+        TextContainer(text: "hello", height: 50,),
+        TextContainer(text: "hello", height: 50,),
+        TextContainer(text: "hello", height: 50,),
       ],
     );
   }

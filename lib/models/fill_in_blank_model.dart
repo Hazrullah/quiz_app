@@ -37,8 +37,10 @@ class FillInBlankModel extends ChangeNotifier{
 
     if(answer.length == trueAnswer.length) {
       if(answer == trueAnswer){
+        print("trueeeeeee");
         return true;
       }else{
+        print("falseeeeee");
         return false;
       }
     }

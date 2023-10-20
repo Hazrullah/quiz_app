@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/widgets/container_card.dart';
+import 'package:quiz_app/widgets/text_container.dart';
 import 'package:quiz_app/widgets/gradient_container.dart';
 import 'package:quiz_app/widgets/quiz_app_bar.dart';
 import 'package:quiz_app/widgets/quiz_body.dart';
@@ -36,10 +36,10 @@ class GridAnswer extends StatelessWidget {
       crossAxisSpacing: 20,
       childAspectRatio: 2,
       children: const [
-        ContainerCard(text: "hello"),
-        ContainerCard(text: "hello"),
-        ContainerCard(text: "hello"),
-        ContainerCard(text: "hello"),
+        TextContainer(text: "hello"),
+        TextContainer(text: "hello"),
+        TextContainer(text: "hello"),
+        TextContainer(text: "hello"),
       ],
     );
   }

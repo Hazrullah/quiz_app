@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class FibProvider extends ChangeNotifier {
-
   String answer = "";
 
   void insertText(String value) {
@@ -9,7 +8,7 @@ class FibProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-   void removeText() {
+  void removeText() {
     answer = answer.substring(0, (answer.length - 1));
     notifyListeners();
   }

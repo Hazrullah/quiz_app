@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/widgets/container_card.dart';
+import 'package:quiz_app/widgets/text_container.dart';
 import 'package:quiz_app/widgets/gradient_container.dart';
 import 'package:quiz_app/widgets/quiz_app_bar.dart';
 import 'package:quiz_app/widgets/quiz_body.dart';
@@ -32,12 +32,12 @@ class TrueFalseAnswer extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ContainerCard(
+        TextContainer(
           width: 160,
           height: 80,
           text: "true",
         ),
-        ContainerCard(
+        TextContainer(
           width: 160,
           height: 80,
           text: "false",

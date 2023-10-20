@@ -1,21 +1,27 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class ContainerCard extends StatelessWidget {
+class TextContainer extends StatelessWidget {
   final double width;
-  final double height;
+  final double? height;
+  final EdgeInsets? padding;
+  final Function()? onTap;
   final String text;
-  final void Function()? onTap;
 
-  const ContainerCard({super.key, this.width = double.infinity, this.height = 50, required this.text, this.onTap});
+  const TextContainer(
+      {super.key,
+      this.width = double.infinity,
+      this.height,
+      this.onTap,
+      this.padding,
+      required this.text});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        onTap;
-      },
+      onTap: onTap,
       child: Container(
+        padding: padding,
         width: width,
         height: height,
         decoration: BoxDecoration(

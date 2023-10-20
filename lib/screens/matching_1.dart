@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/widgets/container_card.dart';
+import 'package:quiz_app/widgets/text_container.dart';
 import 'package:quiz_app/widgets/gradient_container.dart';
 import 'package:quiz_app/widgets/quiz_app_bar.dart';
 import 'package:quiz_app/widgets/quiz_bottom_bar.dart';
@@ -23,12 +23,12 @@ class Matching1 extends StatelessWidget {
               crossAxisSpacing: 20,
               shrinkWrap: true,
               children: const [
-                ContainerCard(text: "hello"),
-                ContainerCard(text: "hello"),
-                ContainerCard(text: "hello"),
-                ContainerCard(text: "hello"),
-                ContainerCard(text: "hello"),
-                ContainerCard(text: "hello"),
+                TextContainer(text: "hello"),
+                TextContainer(text: "hello"),
+                TextContainer(text: "hello"),
+                TextContainer(text: "hello"),
+                TextContainer(text: "hello"),
+                TextContainer(text: "hello"),
               ],
             ),
           ),

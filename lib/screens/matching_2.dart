@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/widgets/container_card.dart';
+import 'package:quiz_app/widgets/text_container.dart';
 import 'package:quiz_app/widgets/gradient_container.dart';
 import 'package:quiz_app/widgets/quiz_app_bar.dart';
 import 'package:quiz_app/widgets/quiz_bottom_bar.dart';
@@ -22,20 +22,20 @@ class Matching2 extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ContainerCard(height: 90, width: 120, text: "hello",),
-                  ContainerCard(height: 90, width: 120, text: "hello",),
-                  ContainerCard(height: 90, width: 120, text: "hello",),
-                  ContainerCard(height: 90, width: 120, text: "hello",),
+                  TextContainer(height: 90, width: 120, text: "hello",),
+                  TextContainer(height: 90, width: 120, text: "hello",),
+                  TextContainer(height: 90, width: 120, text: "hello",),
+                  TextContainer(height: 90, width: 120, text: "hello",),
                 ],
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
 
                 children: [
-                  ContainerCard(height: 90, width: 120, text: "hello",),
-                  ContainerCard(height: 90, width: 120, text: "hello",),
-                  ContainerCard(height: 90, width: 120, text: "hello",),
-                  ContainerCard(height: 90, width: 120, text: "hello",),
+                  TextContainer(height: 90, width: 120, text: "hello",),
+                  TextContainer(height: 90, width: 120, text: "hello",),
+                  TextContainer(height: 90, width: 120, text: "hello",),
+                  TextContainer(height: 90, width: 120, text: "hello",),
                 ],
               ),
             ],
