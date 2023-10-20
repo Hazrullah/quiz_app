@@ -60,7 +60,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
     var provider = Provider.of<FibProvider>(context);
 
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Container(
           height: 100,
@@ -113,20 +113,12 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
             ),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          alignment: WrapAlignment.center,
           children: [
-            for (var i = 0; i < 6; i++)
-              AlphabetCard(
-                alphabet: _fillInBlankModel.alphabetList[i],
-                fillInBlankModel: _fillInBlankModel,
-              ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            for (var i = 6; i < 12; i++)
+            for (var i = 0; i < _fillInBlankModel.alphabetList.length; i++)
               AlphabetCard(
                 alphabet: _fillInBlankModel.alphabetList[i],
                 fillInBlankModel: _fillInBlankModel,
@@ -148,36 +140,34 @@ class AlphabetCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = Provider.of<FibProvider>(context);
-    return Flexible(
-      child: GestureDetector(
-        // onTap: () => data.insertText(alphabet),
-        onTap: () {
-          data.insertText(alphabet);
-          fillInBlankModel.isTrue(data.answer);
-        },
-        child: Container(
-          width: 50,
-          padding: EdgeInsets.symmetric(vertical: 15),
-          decoration: ShapeDecoration(
-            color: Theme.of(context).colorScheme.primaryContainer,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            shadows: [
-              BoxShadow(
-                color: Theme.of(context).colorScheme.shadow,
-                blurRadius: 8,
-                offset: const Offset(0, 4),
-                spreadRadius: 2,
-              )
-            ],
+    return GestureDetector(
+      // onTap: () => data.insertText(alphabet),
+      onTap: () {
+        data.insertText(alphabet);
+        fillInBlankModel.isTrue(data.answer);
+      },
+      child: Container(
+        width: 50,
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+        decoration: ShapeDecoration(
+          color: Theme.of(context).colorScheme.primaryContainer,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
           ),
-          child: AutoSizeText(
-            alphabet,
-            minFontSize: 30,
-            textAlign: TextAlign.center,
-            // style: Theme.of(context).textTheme.bodySmall,
-          ),
+          shadows: [
+            BoxShadow(
+              color: Theme.of(context).colorScheme.shadow,
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+              spreadRadius: 2,
+            )
+          ],
+        ),
+        child: AutoSizeText(
+          alphabet,
+          minFontSize: 30,
+          textAlign: TextAlign.center,
+          // style: Theme.of(context).textTheme.bodySmall,
         ),
       ),
     );
