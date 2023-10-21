@@ -41,7 +41,7 @@ class FillInBlank extends StatelessWidget {
           answerStyle: FillInBlankAnswer(fillInBlankModel: data),
           fillInBlankModel: data,
         ),
-        bottomNavigationBar: const  QuizBottomBar(),
+        bottomNavigationBar: const QuizBottomBar(),
       ),
     );
   }
@@ -130,13 +130,14 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
           children: [
             for (var i = 0; i < _fillInBlankModel.alphabetList.length; i++)
               TextContainer(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
                 text: _fillInBlankModel.alphabetList[i],
                 width: 50,
-                onTap: (){
+                onTap: () {
                   provider.insertText(_fillInBlankModel.alphabetList[i]);
-                  _fillInBlankModel.isTrue(provider.answer);
-                }
+                  provider.checkResult(_fillInBlankModel.trueAnswer, context);
+                },
               ),
           ],
         ),

@@ -4,13 +4,11 @@
 
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 FillInBlankModel fillInBlankModelFromJson(String str) => FillInBlankModel.fromJson(json.decode(str));
 
 String fillInBlankModelToJson(FillInBlankModel data) => json.encode(data.toJson());
 
-class FillInBlankModel extends ChangeNotifier{
+class FillInBlankModel{
   String question;
   String trueAnswer;
   List<String> alphabetList;
@@ -32,18 +30,4 @@ class FillInBlankModel extends ChangeNotifier{
     "trueAnswer": trueAnswer,
     "alphabetList": List<dynamic>.from(alphabetList.map((x) => x)),
   };
-
-  bool? isTrue(String answer){
-
-    if(answer.length == trueAnswer.length) {
-      if(answer == trueAnswer){
-        print("trueeeeeee");
-        return true;
-      }else{
-        print("falseeeeee");
-        return false;
-      }
-    }
-    return null;
-  }
 }
