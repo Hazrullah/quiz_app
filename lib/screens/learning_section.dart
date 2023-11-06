@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/widgets/gradient_container.dart';
 import 'package:quiz_app/widgets/quiz_app_bar.dart';
@@ -13,37 +14,42 @@ class LearningSection extends StatelessWidget {
         backgroundColor: Colors.transparent,
         drawer: const Drawer(),
         appBar: const QuizAppBar(),
-        body: Center(
-          child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            children: [
-              Card(
-                child: Container(
-                  decoration:  ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    color: const Color(0xFFFFF8E1),
-                    shadows: const [
-                      BoxShadow(
-                        color: Color(0x33FFC107),
-                        blurRadius: 8,
-                        offset: Offset(0, 4),
-                        spreadRadius: 2,
-                      )
-                    ],
+        body: ListView.separated(
+          padding: const EdgeInsets.all(20),
+          itemBuilder: (BuildContext context, int index) {
+            return const SizedBox(height: 15);
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              onTap: () {
+
+              },
+              child: Container(
+                alignment: Alignment.center,
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  height: 80,
-                  padding: const EdgeInsets.all(8),
-                    child: const Text("hello"),
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  shadows: [
+                    BoxShadow(
+                      color: Theme.of(context).colorScheme.shadow,
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                      spreadRadius: 2,
+                    )
+                  ],
+                ),
+                height: 100,
+                padding: const EdgeInsets.all(8),
+                child: const AutoSizeText(
+                  "Subject 1",
+                  minFontSize: 30,
                 ),
               ),
-              const ListTile(
-                leading: Icon(Icons.alarm),
-                title: Text("hello"),
-              ),
-            ],
-          ),
+            );
+          },
+          itemCount: 10,
         ),
         bottomNavigationBar: const QuizBottomBar(),
       ),
