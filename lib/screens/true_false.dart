@@ -15,7 +15,7 @@ class TrueFalse extends StatelessWidget {
         backgroundColor: Colors.transparent,
         drawer: Drawer(),
         appBar: QuizAppBar(),
-        body: QuizBody(answerStyle: TrueFalseAnswer(),),
+        body: QuizBody(answerStyle: TrueFalseAnswer(), questionText: 'question',),
         bottomNavigationBar: QuizBottomBar(),
       ),
     );

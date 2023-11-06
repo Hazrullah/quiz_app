@@ -4,13 +4,13 @@ import 'package:quiz_app/theme_manager.dart';
 import 'package:quiz_app/widgets/text_container.dart';
 
 class QuizBody extends StatelessWidget {
+  final String questionText;
   final Widget answerStyle;
-  final FillInBlankModel? fillInBlankModel;
 
   const QuizBody({
     super.key,
     required this.answerStyle,
-    this.fillInBlankModel,
+    required this.questionText,
   });
 
   @override
@@ -46,7 +46,7 @@ class QuizBody extends StatelessWidget {
                 ),
               ),
               child: TextContainer(
-                text: fillInBlankModel?.question ?? "question",
+                text: questionText,
               )),
         ),
         Expanded(

@@ -15,7 +15,7 @@ class MultipleChoice1 extends StatelessWidget {
         backgroundColor: Colors.transparent,
         drawer: Drawer(),
         appBar: QuizAppBar(),
-        body: QuizBody(answerStyle: ListAnswer()),
+        body: QuizBody(answerStyle: ListAnswer(), questionText: 'question',),
         bottomNavigationBar: QuizBottomBar(),
       ),
     );

@@ -39,7 +39,7 @@ class FillInBlank extends StatelessWidget {
         appBar: const QuizAppBar(),
         body: QuizBody(
           answerStyle: FillInBlankAnswer(fillInBlankModel: data),
-          fillInBlankModel: data,
+          questionText: data.question,
         ),
         bottomNavigationBar: const QuizBottomBar(),
       ),
