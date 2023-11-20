@@ -32,7 +32,7 @@ class FibProvider extends ChangeNotifier {
             const Duration(seconds: 2),
             () {
               Navigator.of(context).pop();
-              if(result == false){
+              if (result == false) {
                 answer = "";
                 notifyListeners();
               }

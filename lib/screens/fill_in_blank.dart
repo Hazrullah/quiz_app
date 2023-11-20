@@ -105,11 +105,16 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Spacer(),
-                              AutoSizeText(data[i], minFontSize: 30,),
+                              AutoSizeText(
+                                data[i],
+                                minFontSize: 30,
+                              ),
                               Divider(
                                 thickness: 4,
-                                color: Theme.of(context).colorScheme.onPrimaryContainer,
-                              )
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onPrimaryContainer,
+                              ),
                             ],
                           ),
                         ),
