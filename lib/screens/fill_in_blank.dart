@@ -90,35 +90,39 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Column(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 2),
+                Flexible(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Flexible(
-                        child: AutoSizeText(
-                          data,
-                          minFontSize: 25,
-                        ),
-                      ),
-                      if (data.isNotEmpty)
-                        IconButton(
-                          onPressed: () {
-                            provider.removeText();
-                          },
-                          icon: const Icon(Icons.backspace),
+                      for (int i = 0; i < data.length; i++)
+                        Container(
+                          padding: const EdgeInsets.all(4),
+                          width: 40,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Spacer(),
+                              AutoSizeText(data[i], minFontSize: 30,),
+                              Divider(
+                                thickness: 4,
+                                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                              )
+                            ],
+                          ),
                         ),
                     ],
                   ),
                 ),
-                Divider(
-                  thickness: 4,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
-                ),
+                if (data.isNotEmpty)
+                  IconButton(
+                    onPressed: () {
+                      provider.removeText();
+                    },
+                    icon: const Icon(Icons.backspace),
+                  ),
               ],
             ),
           ),
