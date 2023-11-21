@@ -97,24 +97,26 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       for (int i = 0; i < provider.answer.length; i++)
-                        Container(
-                          padding: const EdgeInsets.all(4),
-                          width: 40,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Spacer(),
-                              AutoSizeText(
-                                provider.answer[i],
-                                minFontSize: 30,
-                              ),
-                              Divider(
-                                thickness: 4,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onPrimaryContainer,
-                              ),
-                            ],
+                        Flexible(
+                          child: Container(
+                            padding: const EdgeInsets.all(4),
+                            width: 40,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Spacer(),
+                                AutoSizeText(
+                                  provider.answer[i],
+                                  minFontSize: 30,
+                                ),
+                                Divider(
+                                  thickness: 4,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onPrimaryContainer,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                     ],
