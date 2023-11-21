@@ -15,7 +15,7 @@ class FillInBlank extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = FillInBlankModel(
-        question: "Tarikh in english",
+        question: "Tarikh in english ",
         trueAnswer: "date",
         alphabetList: [
           "a",
@@ -68,14 +68,13 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
 
   @override
   Widget build(BuildContext context) {
-    var data = Provider.of<FibProvider>(context).answer;
     var provider = Provider.of<FibProvider>(context);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Container(
-          height: 100,
+          height: 80,
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
             boxShadow: [
@@ -97,7 +96,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      for (int i = 0; i < data.length; i++)
+                      for (int i = 0; i < provider.answer.length; i++)
                         Container(
                           padding: const EdgeInsets.all(4),
                           width: 40,
@@ -106,7 +105,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                             children: [
                               const Spacer(),
                               AutoSizeText(
-                                data[i],
+                                provider.answer[i],
                                 minFontSize: 30,
                               ),
                               Divider(
@@ -121,7 +120,9 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                     ],
                   ),
                 ),
-                if (data.isNotEmpty)
+                if (provider.answer.isNotEmpty &&
+                    provider.answer.length !=
+                        _fillInBlankModel.trueAnswer.length)
                   IconButton(
                     onPressed: () {
                       provider.removeText();
@@ -133,7 +134,9 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
           ),
         ),
         Wrap(
-          spacing: 10,
+          spacing: _fillInBlankModel.alphabetList.length >= 6
+              ? (MediaQuery.sizeOf(context).width - (6 * 50) - 40) / 6
+              : 10,
           runSpacing: 10,
           alignment: WrapAlignment.center,
           children: [
@@ -143,10 +146,14 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                     const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
                 text: _fillInBlankModel.alphabetList[i],
                 width: 50,
-                onTap: () {
-                  provider.insertText(_fillInBlankModel.alphabetList[i]);
-                  provider.checkResult(_fillInBlankModel.trueAnswer, context);
-                },
+                onTap: provider.answer.length ==
+                        _fillInBlankModel.trueAnswer.length
+                    ? null
+                    : () {
+                        provider.insertText(_fillInBlankModel.alphabetList[i]);
+                        provider.checkResult(
+                            _fillInBlankModel.trueAnswer, context);
+                      },
               ),
           ],
         ),
