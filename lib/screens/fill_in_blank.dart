@@ -137,7 +137,8 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
         ),
         Wrap(
           spacing: _fillInBlankModel.alphabetList.length >= 6
-              ? (MediaQuery.sizeOf(context).width - (6 * 50) - 40) / 6
+              ? ((MediaQuery.sizeOf(context).width - (6 * 50) - 40) / 5)
+                  .floorToDouble()
               : 10,
           runSpacing: 10,
           alignment: WrapAlignment.center,
