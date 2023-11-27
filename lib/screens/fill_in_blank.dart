@@ -96,7 +96,9 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      for (int i = 0; i < provider.answer.length; i++)
+                      for (int i = 0;
+                          i < _fillInBlankModel.trueAnswer.length;
+                          i++)
                         Flexible(
                           child: Container(
                             padding: const EdgeInsets.all(4),
@@ -105,10 +107,11 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Spacer(),
-                                AutoSizeText(
-                                  provider.answer[i],
-                                  minFontSize: 30,
-                                ),
+                                  if (provider.answer.length > i)
+                                    AutoSizeText(
+                                      provider.answer != ""? provider.answer[i] : "",
+                                      minFontSize: 30,
+                                    ),
                                 Divider(
                                   thickness: 4,
                                   color: Theme.of(context)
