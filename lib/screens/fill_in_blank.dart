@@ -14,8 +14,9 @@ class FillInBlank extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var data = FillInBlankModel(
-        question: "Tarikh in english ",
+    List<FillInBlankModel> listSampleData = [
+      FillInBlankModel(
+        question: "sample Q1: Tarikh in english?",
         trueAnswer: "date",
         alphabetList: [
           "a",
@@ -30,12 +31,61 @@ class FillInBlank extends StatelessWidget {
           "g",
           "v",
           "u"
-        ]);
+        ],
+      ),
+      FillInBlankModel(
+        question: "sample Q2: Color of school bus?",
+        trueAnswer: "yellow",
+        alphabetList: [
+          "o",
+          "t",
+          "i",
+          "y",
+          "d",
+          "e",
+          "b",
+          "p",
+          "w",
+          "g",
+          "l",
+          "u"
+        ],
+      ),
+      FillInBlankModel(
+        question: "sample Q3: smallest state in malaysia?",
+        trueAnswer: "perlis",
+        alphabetList: [
+          "a",
+          "p",
+          "i",
+          "r",
+          "d",
+          "e",
+          "b",
+          "s",
+          "h",
+          "g",
+          "l",
+          "e"
+        ],
+      ),
+    ];
+
+    var currentState = Provider.of<FibProvider>(context);
+    currentState.questionLenght = listSampleData.length;
+    var data = listSampleData[currentState.currentQuestion];
 
     return GradientContainer(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: const Drawer(),
+        drawer: Drawer(
+          child: Switch(
+            value: currentState.arabicCharInput,
+            onChanged: (bool value) {
+              currentState.changeInputStyle(value);
+            },
+          ),
+        ),
         appBar: const QuizAppBar(),
         body: QuizBody(
           answerStyle: FillInBlankAnswer(fillInBlankModel: data),
@@ -60,14 +110,15 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
   // List<String> alphabetList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
   late FillInBlankModel _fillInBlankModel;
 
-  @override
-  void initState() {
-    _fillInBlankModel = widget.fillInBlankModel;
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   _fillInBlankModel = widget.fillInBlankModel;
+  // super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    _fillInBlankModel = widget.fillInBlankModel;
     var provider = Provider.of<FibProvider>(context);
 
     return Column(
@@ -96,30 +147,54 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      for (int i = 0;
-                          i < _fillInBlankModel.trueAnswer.length;
-                          i++)
-                        Flexible(
-                          child: Container(
-                            padding: const EdgeInsets.all(4),
-                            width: 40,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Spacer(),
+                      if (provider.arabicCharInput == false ||
+                          provider.answer == "")
+                        for (int i = 0;
+                            i < _fillInBlankModel.trueAnswer.length;
+                            i++)
+                          Flexible(
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              width: 40,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Spacer(),
                                   if (provider.answer.length > i)
                                     AutoSizeText(
-                                      provider.answer != ""? provider.answer[i] : "",
+                                      provider.answer != ""
+                                          ? provider.answer[i]
+                                          : "",
                                       minFontSize: 30,
                                     ),
-                                Divider(
-                                  thickness: 4,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onPrimaryContainer,
-                                ),
-                              ],
+                                  Divider(
+                                    thickness: 4,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimaryContainer,
+                                  ),
+                                ],
+                              ),
                             ),
+                          ),
+                      if (provider.arabicCharInput && provider.answer != "")
+                        Flexible(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Spacer(),
+                              AutoSizeText(
+                                provider.answer,
+                                minFontSize: 30,
+                              ),
+                              Divider(
+                                thickness: 4,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onPrimaryContainer,
+                              ),
+                            ],
                           ),
                         ),
                     ],

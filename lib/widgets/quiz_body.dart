@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/models/fill_in_blank_model.dart';
 import 'package:quiz_app/theme_manager.dart';
 import 'package:quiz_app/widgets/text_container.dart';
 
@@ -46,6 +45,7 @@ class QuizBody extends StatelessWidget {
                 ),
               ),
               child: TextContainer(
+                padding: const EdgeInsets.all(10),
                 text: questionText,
               )),
         ),

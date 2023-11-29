@@ -39,6 +39,7 @@ class TextContainer extends StatelessWidget {
         child: Center(
           child: AutoSizeText(
             text,
+            textAlign: TextAlign.center,
             minFontSize: 30,
             style: TextStyle(
               color: Theme.of(context).colorScheme.onPrimaryContainer,

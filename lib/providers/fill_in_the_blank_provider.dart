@@ -4,6 +4,9 @@ import 'package:lottie/lottie.dart';
 class FibProvider extends ChangeNotifier {
   String answer = "";
   late bool result;
+  bool arabicCharInput = false;
+  int currentQuestion = 0;
+  late int questionLenght;
 
   void insertText(String value) {
     answer = answer + value;
@@ -22,6 +25,11 @@ class FibProvider extends ChangeNotifier {
     }
   }
 
+  void changeInputStyle(bool value) {
+    arabicCharInput = value;
+    notifyListeners();
+  }
+
   void displayDialog(BuildContext context) {
     showDialog<String>(
         barrierColor: Colors.transparent,
@@ -34,6 +42,12 @@ class FibProvider extends ChangeNotifier {
               Navigator.of(context).pop();
               if (result == false) {
                 answer = "";
+                notifyListeners();
+              }
+              if (result == true && currentQuestion < (questionLenght - 1)) {
+                answer = "";
+                result = false;
+                currentQuestion++;
                 notifyListeners();
               }
             },
