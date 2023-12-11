@@ -69,6 +69,24 @@ class FillInBlank extends StatelessWidget {
           "e"
         ],
       ),
+      FillInBlankModel(
+        question: "test arabic",
+        trueAnswer: "مد",
+        alphabetList: [
+          "د",
+          "م",
+          "ى",
+          "س",
+          "ظ",
+          "ص",
+          "ل",
+          "ت",
+          "س",
+          "و",
+          "ح",
+          "ف"
+        ],
+      ),
     ];
 
     var currentState = Provider.of<FibProvider>(context);
@@ -125,7 +143,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Container(
-          height: 80,
+          height: 100,
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
             boxShadow: [
@@ -224,7 +242,7 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
             for (var i = 0; i < _fillInBlankModel.alphabetList.length; i++)
               TextContainer(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                 text: _fillInBlankModel.alphabetList[i],
                 width: 50,
                 onTap: provider.answer.length ==
