@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 class FibProvider extends ChangeNotifier {
   String answer = "";
   late bool result;
-  bool arabicCharInput = false;
   int currentQuestion = 0;
   late int questionLenght;
 
@@ -23,11 +22,6 @@ class FibProvider extends ChangeNotifier {
       answer == trueAnswer ? result = true : result = false;
       displayDialog(context);
     }
-  }
-
-  void changeInputStyle(bool value) {
-    arabicCharInput = value;
-    notifyListeners();
   }
 
   void displayDialog(BuildContext context) {

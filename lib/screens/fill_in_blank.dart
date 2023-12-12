@@ -96,14 +96,7 @@ class FillInBlank extends StatelessWidget {
     return GradientContainer(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: Drawer(
-          child: Switch(
-            value: currentState.arabicCharInput,
-            onChanged: (bool value) {
-              currentState.changeInputStyle(value);
-            },
-          ),
-        ),
+        drawer: const Drawer(),
         appBar: const QuizAppBar(),
         body: QuizBody(
           answerStyle: FillInBlankAnswer(fillInBlankModel: data),
@@ -165,14 +158,16 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (provider.arabicCharInput == false ||
+                      if (RegExp(r'^[a-zA-Z]+')
+                              .hasMatch(_fillInBlankModel.trueAnswer) ||
                           provider.answer == "")
                         for (int i = 0;
                             i < _fillInBlankModel.trueAnswer.length;
                             i++)
                           Flexible(
                             child: Container(
-                              padding: const EdgeInsets.all(4),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 0, horizontal: 4),
                               width: 40,
                               child: Column(
                                 mainAxisAlignment:
@@ -196,7 +191,9 @@ class _FillInBlankAnswerState extends State<FillInBlankAnswer> {
                               ),
                             ),
                           ),
-                      if (provider.arabicCharInput && provider.answer != "")
+                      if (RegExp(r'^[\u0621-\u064A]+')
+                              .hasMatch(_fillInBlankModel.trueAnswer) &&
+                          provider.answer != "")
                         Flexible(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
